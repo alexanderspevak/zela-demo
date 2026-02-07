@@ -1,0 +1,13 @@
+[package]
+name = "leader_locator"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+zela-std.workspace = true
+serde.workspace = true
+log.workspace = true
+chrono = "0.4.43"
