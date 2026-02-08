@@ -37,17 +37,6 @@ impl CustomProcedure for LeaderLocator {
             .to_string();
 
         let cluster_nodes = client.get_cluster_nodes().await?;
-        let mut ip4 = Vec::new();
-        cluster_nodes.iter().for_each(|node| {
-            if node.gossip.is_some() {
-                let ipaddress = node.gossip.unwrap();
-                if let SocketAddr::V4(addr) = ipaddress {
-                    ip4.push(addr.ip().to_string());
-                }
-            }
-        });
-
-        log::info!("{:?}", ip4);
 
         let leader_contact_info = cluster_nodes
             .iter()
