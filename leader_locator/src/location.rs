@@ -69,7 +69,7 @@ impl fmt::Display for LeaderGeo {
             LeaderGeo::Oceania => write!(f, "Oceania"),
             LeaderGeo::MiddleEast => write!(f, "Middle East"),
             LeaderGeo::Asia => write!(f, "Asia"),
-            LeaderGeo::Africa => write!(f, "Asia"),
+            LeaderGeo::Africa => write!(f, "Africa"),
             LeaderGeo::Europe => write!(f, "Europe"),
             LeaderGeo::Unknown => write!(f, "Unknown"),
         }
@@ -86,7 +86,7 @@ pub enum ZelaServerRegion {
 impl fmt::Display for ZelaServerRegion {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            ZelaServerRegion::Frankfurt => write!(f, "Berlin"),
+            ZelaServerRegion::Frankfurt => write!(f, "Frankfurt"),
             ZelaServerRegion::Dubai => write!(f, "Dubai"),
             ZelaServerRegion::NewYork => write!(f, "New York"),
             ZelaServerRegion::Tokyo => write!(f, "Tokyo"),
