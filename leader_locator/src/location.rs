@@ -4,39 +4,13 @@ use std::{
 };
 use zela_std::{RpcError, rpc_client::response::RpcContactInfo};
 
-const NORTH_AMERICA_PREFIXES: &[&str] = &[
-    "64.130.", "208.115.", "198.13.", "198.244.", "44.", "204.16.", "15.204.", "40.160.",
-    "23.109.", "74.118.", "67.209.", "67.213.", "199.48.", "199.127.", "107.6.", "72.251.",
-    "104.238.", "104.204.", "18.208.", "34.232.", "50.150.", "108.171.", "63.251.", "38.46.",
-    "47.76.", "132.145.", "35.197.", "63.177.", "74.63.", "64.203.", "64.46.", "148.72.",
-    "208.91.", "208.97.", "23.111.", "140.82.", "155.138.", "64.176.", "15.235.", "66.245.",
-    "199.231.", "139.84.", "148.113.", "136.244.", "192.69.",
-];
-
-const EUROPE_PREFIXES: &[&str] = &[
-    "135.125.", "5.199.", "79.137.", "162.55.", "65.21.", "188.42.", "145.239.", "54.220.",
-    "91.242.", "109.94.", "31.40.", "212.237.", "82.27.", "141.98.", "185.189.", "88.216.",
-    "57.129.", "95.214.", "212.69.", "84.32.", "213.145.", "194.67.", "195.12.", "5.61.",
-    "93.123.", "46.166.", "45.32.", "62.113.", "51.195.", "178.250.", "64.58.", "89.44.",
-    "213.21.", "37.72.", "79.127.", "94.72.", "78.141.", "31.134.", "185.52.", "149.28.",
-    "83.143.", "169.155.", "23.252.", "164.152.", "137.220.", "195.14.", "149.12.", "49.12.",
-    "162.19.", "141.94.", "51.68.", "51.81.", "51.222.", "51.89.", "51.75.", "51.195.", "51.38.",
-    "51.20.", "51.44.", "51.21.", "51.83.", "51.255.", "51.77.",
-];
-
-const ASIA_PREFIXES: &[&str] = &[
-    "61.111.", "160.202.", "60.244.", "122.116.", "103.106.", "43.130.", "8.211.", "154.60.",
-    "45.250.", "103.14.", "8.209.", "103.88.", "103.167.", "183.81.", "116.126.", "203.23.",
-    "101.47.", "103.28.", "117.52.", "203.118.",
-];
-
-const SOUTH_AMERICA_PREFIXES: &[&str] = &["186.233.", "177.54.", "189.1."];
-
-const AFRICA_PREFIXES: &[&str; 1] = &["102.211."];
-
-const OCEANIA_PREFIXES: &[&str; 0] = &[];
-
-const MIDDLE_EAST_PREFIXES: &[&str; 0] = &[];
+mod africa;
+mod asia;
+mod europe;
+mod middle_east;
+mod north_america;
+mod oceania;
+mod south_america;
 
 pub enum LeaderGeo {
     NorthAmerica,
@@ -64,19 +38,19 @@ impl From<&IpAddr> for LeaderGeo {
                     prefixes.iter().any(|&prefix| ip_str.starts_with(prefix))
                 };
 
-                if matches_any(NORTH_AMERICA_PREFIXES) {
+                if matches_any(north_america::IP_ADRESSES) {
                     LeaderGeo::NorthAmerica
-                } else if matches_any(EUROPE_PREFIXES) {
+                } else if matches_any(europe::IP_ADRESSES) {
                     LeaderGeo::Europe
-                } else if matches_any(ASIA_PREFIXES) {
+                } else if matches_any(asia::IP_ADRESSES) {
                     LeaderGeo::Asia
-                } else if matches_any(SOUTH_AMERICA_PREFIXES) {
+                } else if matches_any(south_america::IP_ADDRESSES) {
                     LeaderGeo::SouthAmerica
-                } else if matches_any(AFRICA_PREFIXES) {
+                } else if matches_any(africa::IP_ADDRESSES) {
                     LeaderGeo::Africa
-                } else if matches_any(OCEANIA_PREFIXES) {
+                } else if matches_any(oceania::IP_ADDRESSES) {
                     LeaderGeo::Oceania
-                } else if matches_any(MIDDLE_EAST_PREFIXES) {
+                } else if matches_any(middle_east::IP_ADDRESSES) {
                     LeaderGeo::MiddleEast
                 } else {
                     log::warn!("IPv4 address with unknown prefix detected: {}", ip_str);
@@ -155,7 +129,7 @@ fn get_ip_from_contact_info(contact_info: &RpcContactInfo) -> Option<SocketAddr>
     None
 }
 
-pub fn get_closest_zela_server_region(
+pub fn get_geo_info(
     contact_info: &RpcContactInfo,
     slot: u64,
 ) -> Result<(ZelaServerRegion, LeaderGeo), RpcError<()>> {

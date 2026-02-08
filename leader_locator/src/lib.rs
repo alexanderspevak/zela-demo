@@ -1,6 +1,3 @@
-use std::net::{IpAddr, Ipv4Addr, Ipv6Addr, SocketAddr};
-
-use log::logger;
 use serde::Serialize;
 use zela_std::{CustomProcedure, RpcError, rpc_client::RpcClient, zela_custom_procedure};
 
@@ -47,8 +44,7 @@ impl CustomProcedure for LeaderLocator {
                 data: None,
             })?;
 
-        let (closest_region, leader_geo) =
-            location::get_closest_zela_server_region(leader_contact_info, slot)?;
+        let (closest_region, leader_geo) = location::get_geo_info(leader_contact_info, slot)?;
 
         Ok(Output {
             slot,
