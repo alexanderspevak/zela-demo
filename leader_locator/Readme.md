@@ -1,5 +1,5 @@
 ### How to build:
-This is described in Zela documentation. Basic steps for this are connecting github repo and registering procedure to the given project and designating branch to which will zela hook react. Any push to designated branch will trigger build on Zela's dashboard. 
+This is described in Zela documentation. Basic steps for this are connecting github repo and registering procedure to the given project and designating branch to which will Zela hook react. Any push to designated branch will trigger build on Zela's dashboard. 
 ### How to run procedure:
 1. Set `ZELA_PROJECT_KEY_ID`:
 ```sh
@@ -33,5 +33,5 @@ where `5915c32a9d1d578f91b1414024d324b21952adfc`is latest commit to main branch 
 }
 ```
 ### Feedback
-Script examples in Zela documentation were not precise. Copy paste did not work, I had to fix the scripts though that could be difference between `zsh` and `bash`. I would suggest adding working `zsh` scripts. Unfortunately I do not have more to add as crypto area is new to me. Code in `RpcClient` was readable and I could find desired methods with ease. 
+Script examples in Zela's documentation were not precise. Copy paste did not work, I had to fix the scripts though that could be difference between `zsh` and `bash`. I would suggest adding working `zsh` scripts. Unfortunately I do not have more to add as crypto area is new to me. Code in `RpcClient` was readable and I could find desired methods with ease.
 
