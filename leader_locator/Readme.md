@@ -9,7 +9,7 @@ export ZELA_PROJECT_KEY_ID=$rpk-48eab239d0204704ab787b27a8a1fedf-54c904ac064b471
 ```sh
 export ZELA_PROJECT_KEY_SECRET={{secret}}
 ```
-3. Install `jq` if not present in your environment"
+3. Install `jq` if not present in your environment
 MAC example: 
 ```sh
 brew install jq
