@@ -14,7 +14,7 @@ MAC example:
 ```sh
 brew install jq
 ```
-4. Run procedure: 
+4. Run procedure in root of this repository: 
 ```sh
     ./run-procedure.sh leader_locator#5915c32a9d1d578f91b1414024d324b21952adfc null
 ```
