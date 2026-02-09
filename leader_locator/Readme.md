@@ -3,7 +3,7 @@ This is described in Zela documentation. Basic steps for this are connecting git
 ### How to run procedure:
 1. Set `ZELA_PROJECT_KEY_ID`:
 ```sh
-export ZELA_PROJECT_KEY_ID=$rpk-48eab239d0204704ab787b27a8a1fedf-54c904ac064b4711bca1996d097baa42
+export ZELA_PROJECT_KEY_ID=rpk-48eab239d0204704ab787b27a8a1fedf-54c904ac064b4711bca1996d097baa42
 ```
 2. Set `ZELA_PROJECT_KEY_SECRET`. This value will be provided privately. 
 ```sh
