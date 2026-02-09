@@ -18,7 +18,7 @@ brew install jq
 ```sh
     ./run-procedure.sh leader_locator#5915c32a9d1d578f91b1414024d324b21952adfc null
 ```
-where `5915c32a9d1d578f91b1414024d324b21952adfc`is latest commit hash to main branch before updating this `Readme` file. If you do changes to main branch, you can update the commit hash. 
+where `5915c32a9d1d578f91b1414024d324b21952adfc`is latest commit to main branch before updating this `Readme` file. If you do changes to main branch, you can update the commit hash. 
 ### Example Response from procedure
 ```json
 {
